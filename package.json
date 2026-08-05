@@ -1,0 +1,27 @@
+{
+  "name": "hairitage-barbershop-management",
+  "version": "1.0.0",
+  "description": "A modern **full-stack barbershop management website** designed to provide customers with an easy way to explore services, book appointments, and interact with the business online.",
+  "keywords": [
+    "barbershop",
+    "html",
+    "css",
+    "javascript",
+    "nodejs"
+  ],
+  "homepage": "https://github.com/saido-szn/hairitage-barbershop-management#readme",
+  "bugs": {
+    "url": "https://github.com/saido-szn/hairitage-barbershop-management/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saido-szn/hairitage-barbershop-management.git"
+  },
+  "license": "MIT",
+  "author": "Said Ahmed",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
