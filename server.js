@@ -1,14 +1,19 @@
-//Import Node's built-in http module
-const http = require('http');
+const express = require("express");
 
-//Creating server
-//Request- something the browser aske for from the server
-//Response- what the server sends back to the browser
-const server = http.createServer(function(request, response){
-    response.end("Welcome to Hairitage BarberShop!")
+const app = express();
+
+app.use(express.static(__dirname));
+// Allows Express to read JSON data
+app.use(express.json());
+
+app.post("/booking", (req, res) => {
+
+    console.log(req.body);
+
+    res.send("Booking received!");
+
 });
 
-//Server listening on port 3000
-server.listen(3000, function(){
-    console.log("Server is running on http://localhost:3000");
+app.listen(4000, () => {
+    console.log("Server running at http://localhost:4000");
 });

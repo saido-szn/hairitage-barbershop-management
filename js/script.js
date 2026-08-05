@@ -209,18 +209,29 @@ bookingForm.addEventListener("submit", function(event){
         formMessage.textContent = "Please fill in all the fields.";
         formMessage.style.color = "red";
     }else{
-        //If the form is valid, we can submit the form and show a success message
-        formMessage.textContent = "Thank you for booking your service with us!";
-        formMessage.style.color = "green";
-        //Here we can also clear the form fields after successful submission
-        customerName.value = "";
-        customerEmail.value = "";
-        customerService.value = "";
-        //  Here we can also send the form data to the server using AJAX or Fetch API, but for now we will just show a success message
-        //We can also clear the form message after a few seconds using setTimeout() function
-        //setTimeout(function(){
-           // formMessage.textContent = "";
-        //}, 3000); we can also use this to clear the form message after 3 seconds
+    fetch("/booking", {
+        method: "POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body: JSON.stringify({
+
+            name:name,
+            email:email,
+            service:service
+
+        })
+
+    });
+
+    formMessage.textContent = "Booking sent successfully!";
+    formMessage.style.color = "green";
+
+    customerName.value="";
+    customerEmail.value="";
+    customerService.value="";
     }
 });
 
