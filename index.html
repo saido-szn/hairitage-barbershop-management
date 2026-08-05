@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hairitage BarberShop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/beard.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            Hairitage BarberShop
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#Gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <!-- HERO SECTION -->
+        <section id="home" class="hero">
+            <img src="images/banner.jpg" alt="Hairitage BarberShop Banner" class="hero-image" id="banner">
+            <div id="banner-caption" class="banner-caption">
+                Hairitage BarberShop has proudly served Nairobi with professional grooming,
+                quality service, and modern barbering since 2026.
+            </div>
+            <div class="hero-content">
+                <h2>Experience the Art of Grooming</h2>
+                <h1>Fresh Cuts, Classic Styles</h1>
+                <p>
+                 At Hairitage BarberShop, we blend traditional barbering techniques
+                 with modern styles to give you the perfect look.
+                 Our skilled barbers are dedicated to providing exceptional service
+                 in a welcoming environment.
+                </p>
+                <a href="#contact" class="hero-btn">
+                    BOOK APPOINTMENT
+                </a>
+            </div>
+        </section>
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-title">
+                ABOUT US
+            </div>
+            <h2>Modern Grooming With Traditional Excellence</h2>
+            <p>
+            Hairitage BarberShop is a modern neighborhood barbershop located in Nairobi, Kenya.
+            We proudly serve students, professionals, families, and visitors looking for quality
+            grooming services at affordable prices.
+            Our mission is to create a comfortable and friendly space where every customer receives
+            professional care and attention.
+            With skilled barbers, quality equipment, and excellent customer service, we ensure every
+            client leaves looking fresh and confident.
+            </p>
+        </section>
+        <!-- SERVICES --> 
+        <section id="services">
+            <div class="section-title">OUR SERVICES</div>
+            <h2>Professional Grooming Services</h2>
+            <div class="container-services" id="services-container">
+                
+            </div>
+        </section>
+        <!-- WISHLIST -->
+        <section id="wishlist">
+            <div class="section-title">APPOINTMENT WISHLIST</div>
+            <h2>Create Your Services List</h2>
+            <div class="service-input-area">
+            <input
+            type="text"
+            id="service-input"
+            placeholder="Enter a service">
+            <button id="add-button">Add a Service</button>
+        </div>
+        <ul id="service-list"></ul>
+        </section>
+        <!-- Gallery -->
+        <section id="Gallery">
+            <div class="section-title">GALLERY</div>
+            <h2>Our Barbershop Experience</h2>
+            <p class="gallery-text">
+            Take a look at our modern barbering environment, professional grooming tools,
+            and stylish haircut results created for our valued customers.
+            </p>
+            <div class="gallery-grid">
+                <img src="images/view.jpg" alt="Gallery Image" class="gallery-image">
+                <img src="images/clippers.jpg" alt="Gallery Image" class="gallery-image">
+                <img src="images/beardshave.jpg" alt="Gallery Image" class="gallery-image">
+                <img src="images/ambience.jpg" alt="Gallery Image" class="gallery-image">
+                <img src="images/beardshave.jpg" alt="Gallery Image" class="gallery-image">
+                <img src="images/coffee.jpg" alt="Gallery Image" class="gallery-image">
+                <img src="images/seats.jpg" alt="Gallery Image" class="gallery-image">
+                <img src="images/shelf.jpg" alt="Gallery Image" class="gallery-image">
+                <img src="images/environment.jpg" alt="Gallery Image" class="gallery-image">
+            </div>
+        </section>
+        <!-- Why us-->
+        <section id="why-us">
+            <div class="section-title">WHY CHOOSE US</div>
+            <h2>Your Confidence Is Our Priority</h2>
+            <p>
+            At Hairitage BarberShop, customer satisfaction is our top priority.
+            We focus on cleanliness, professionalism, comfort, and modern grooming techniques
+            to provide the best experience possible.
+            Our barbers stay updated with the latest haircut trends and styles to ensure every
+            client receives excellent service.
+            </p>
+        </section>
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="section-title">
+                CONTACT US
+            </div>
+            <h2>Book Your Next Visit</h2>
+            <p>BOOK YOUR SERVICE WITH US</p>
+            <form id="booking-form">
+                <input type="text" id="customer-name" placeholder="Your Name" required>
+                <input type="email" id="customer-email" placeholder="Your Email" required>
+                <input type="text" id="customer-service" placeholder="Preferred Service" required>
+                <button type="submit">Book Now</button>
+            </form>
+            <p id="form-message"></p>
+            
+            <p>Address: 112 Westlands, Nairobi, Kenya</p>
+            <p>Phone: 0724000002</p>
+            <p>Email: info@hairitagebarbershop.com</p>
+        </section>
+    </main>
+    <footer>
+        © 2026 Hairitage BarberShop
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
