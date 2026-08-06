@@ -195,7 +195,7 @@ const customerService = document.getElementById("customer-service");
 const formMessage = document.getElementById("form-message");
 
 //Adding an Event Listener to the form so that when it is submitted, the function inside it will be executed
-bookingForm.addEventListener("submit", function(event){
+bookingForm.addEventListener("submit", async function(event){
     //To prevent the form from submitting and refreshing the page 
     event.preventDefault();
     //Getting the values of the input fields
@@ -209,7 +209,8 @@ bookingForm.addEventListener("submit", function(event){
         formMessage.textContent = "Please fill in all the fields.";
         formMessage.style.color = "red";
     }else{
-    fetch("/booking", {
+    const response = await fetch("/booking", {
+        
         method: "POST",
 
         headers:{
@@ -225,9 +226,19 @@ bookingForm.addEventListener("submit", function(event){
         })
 
     });
+            // Read the server response
+        const message = await response.text();
 
+        console.log(message);
+
+
+    if (response.ok) {
     formMessage.textContent = "Booking sent successfully!";
     formMessage.style.color = "green";
+    } else {
+    formMessage.textContent = "Failed to send booking.";
+    formMessage.style.color = "red";
+    }
 
     customerName.value="";
     customerEmail.value="";
