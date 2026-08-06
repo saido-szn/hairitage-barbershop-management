@@ -202,7 +202,6 @@ bookingForm.addEventListener("submit", async function(event){
     const name = customerName.value;
     const email = customerEmail.value;
     const service = customerService.value;
-
     //Validating the form fields to make sure they are not empty
     // || in JavaScript is the logical OR operator, it returns true if either of the operands is true, and false if both are false
     if(name ===""|| email ==="" || service ===""){
