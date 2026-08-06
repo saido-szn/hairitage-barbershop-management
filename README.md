@@ -1,338 +1,300 @@
-# 💈 Hairitage BarberShop
+# 💈 Hairitage Barbershop Management System
 
-A modern **full-stack barbershop management website** designed to provide customers with an easy way to explore services, book appointments, and interact with the business online.
+A modern **full-stack barbershop management website** built to help customers explore services and book appointments online.
 
-The project started as a front-end website using **HTML, CSS, and JavaScript** and is being expanded into a complete web application using **Node.js, Express.js, PostgreSQL, REST APIs, authentication, and cloud deployment**.
+This project started as a frontend website using **HTML, CSS, and JavaScript** and is gradually being transformed into a full-stack application using **Node.js**, **Express.js**, and **PostgreSQL**.
 
----
-
-# Project Vision
-
-The goal of this project is to build a real-world business website that can be used by an actual barbershop.
-
-Customers will be able to:
-
-- Browse available services
-- View prices
-- Book appointments
-- Contact the business
-- Receive confirmation emails
-- Create customer accounts
-- Log in securely
-- View appointment history
-- Leave reviews and ratings
-
-Business owners will be able to:
-
-- View bookings
-- Manage appointments
-- Manage customers
-- Update services
-- Upload gallery images
-- Monitor business statistics
-- Manage staff
-- Respond to customer feedback
+The purpose of this project is to strengthen my web development skills by building a real-world application while learning each technology step by step.
 
 ---
 
-# Technologies
+# 📸 Preview
 
-## Front-End
+> Screenshots will be added as the project grows.
+
+---
+
+# ✨ Current Features
+
+- Responsive website design
+- Modern user interface
+- Hero section
+- About section
+- Services section
+- Gallery section
+- Contact section
+- Appointment booking form
+- Dynamic service cards using JavaScript
+- Service wishlist
+- Local Storage support for wishlist
+- Client-side form validation
+- Express.js backend server
+- REST API endpoint for bookings
+- PostgreSQL database integration
+- Stores customer bookings permanently
+
+---
+
+# 🛠️ Technologies Used
+
+## Frontend
 
 - HTML5
 - CSS3
 - JavaScript (ES6)
-- Responsive Web Design
-- CSS Grid
-- Flexbox
-- DOM Manipulation
-- Local Storage
 
----
-
-## Back-End (Planned)
+## Backend
 
 - Node.js
 - Express.js
-- REST API
-- Authentication
-- JWT
-- Password Hashing
-- File Uploads
-- Environment Variables
-
----
 
 ## Database
 
 - PostgreSQL
-- SQL
-- CRUD Operations
-- Database Relationships
 
----
+## Development Tools
 
-## APIs
-
-- Google Maps API
-- EmailJS / Nodemailer
-- Weather API (optional)
-- Payment APIs
-- REST APIs
-
----
-
-## Deployment
-
+- Visual Studio Code
+- Git
 - GitHub
-- GitHub Pages
-- Render / Railway
-- Custom Domain
-- HTTPS
-- Cloud Database
+- npm
 
 ---
 
-# Current Features
+# 📁 Project Structure
 
-✅ Responsive navigation
-
-✅ Hero section
-
-✅ About section
-
-✅ Services section
-
-✅ Dynamic service cards
-
-✅ Gallery
-
-✅ Appointment wishlist
-
-✅ Dynamic DOM manipulation
-
-✅ Local Storage
-
-✅ Booking form validation
-
-✅ Interactive banner
-
-✅ Mobile responsive design
-
----
-
-# Planned Features
-
-### Authentication
-
-- User Registration
-- Login
-- Logout
-- Password Encryption
-- Forgot Password
-- Email Verification
+```
+Hairitage-Barbershop/
+│
+├── css/
+│
+├── images/
+│
+├── js/
+│
+├── node_modules/
+│
+├── .env
+├── .gitignore
+├── db.js
+├── index.html
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── PROJECT_GUIDE.md
+├── Project_Journey.md
+├── README.md
+└── server.js
+```
 
 ---
 
-### Appointment System
+# 🚀 Getting Started
 
-- Book appointments
-- Select barber
-- Select service
-- Choose appointment date
-- Choose appointment time
-- Prevent double bookings
-- Appointment confirmation
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/saido-szn/hairitage-barbershop-management.git
+```
 
 ---
 
-### Customer Dashboard
+## 2. Open the project
 
-- View appointments
-- Cancel appointments
-- Update profile
-- View booking history
+```bash
+cd hairitage-barbershop-management
+```
 
 ---
 
-### Admin Dashboard
+## 3. Install dependencies
+
+```bash
+npm install
+```
+
+This installs all required packages listed in `package.json`.
+
+---
+
+## 4. Create a `.env` file
+
+Create a file named `.env` in the project root and add:
+
+```env
+DB_USER=your_username
+DB_HOST=localhost
+DB_NAME=hairitage_db
+DB_PASSWORD=your_password
+DB_PORT=5432
+```
+
+> **Note:** Never upload your `.env` file to GitHub.
+
+---
+
+## 5. Create the PostgreSQL database
+
+Create a database named:
+
+```sql
+hairitage_db
+```
+
+Then create the `bookings` table:
+
+```sql
+CREATE TABLE bookings (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    service VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+---
+
+## 6. Start the server
+
+```bash
+node server.js
+```
+
+You should see:
+
+```
+Server running at http://localhost:4000
+```
+
+---
+
+## 7. Open the website
+
+Visit:
+
+```
+http://localhost:4000
+```
+
+---
+
+# 📡 API
+
+## Create Booking
+
+**Endpoint**
+
+```
+POST /booking
+```
+
+**Request Body**
+
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "service": "Fade Cut"
+}
+```
+
+**Response**
+
+```
+Booking saved successfully!
+```
+
+---
+
+# 🗄️ Database
+
+Bookings are stored inside the PostgreSQL database.
+
+Current table:
+
+```
+bookings
+```
+
+Columns:
+
+| Column | Description |
+|---------|-------------|
+| id | Unique booking ID |
+| name | Customer's name |
+| email | Customer's email |
+| service | Selected service |
+| created_at | Date and time booking was created |
+
+---
+
+# 📚 Documentation
+
+Additional project documentation:
+
+- **PROJECT_GUIDE.md** – explains the purpose of every file and folder in the project.
+- **Project_Journey.md** – documents how the project was built and the technologies learned throughout development.
+
+---
+
+# 🎯 Learning Objectives
+
+This project is helping me learn:
+
+- Frontend web development
+- Backend development with Node.js
+- Express.js
+- REST APIs
+- PostgreSQL
+- Git and GitHub
+- Full-stack application development
+- Writing clean and maintainable code
+
+---
+
+# 🚧 Current Status
+
+✅ Frontend complete
+
+✅ Express server running
+
+✅ PostgreSQL connected
+
+✅ Booking form sends data to the backend
+
+✅ Booking information is saved in the database
+
+The project is actively being improved as I continue learning full-stack web development.
+
+---
+
+# 🔮 Future Improvements
+
+Planned features include:
 
 - View all bookings
-- Manage customers
-- Add services
-- Delete services
-- Update pricing
-- Manage gallery
-- View reports
+- Update bookings
+- Delete bookings
+- Better user feedback
+- Improved error handling
+- Appointment management
+
+These features will be added as I continue learning.
 
 ---
 
-### Database
-
-- Store customer information
-- Store appointments
-- Store services
-- Store reviews
-- Store staff information
-
----
-
-### Email System
-
-- Booking confirmation
-- Appointment reminders
-- Password reset emails
-- Contact form emails
-
----
-
-### API Integration
-
-- Google Maps
-- Payment Gateway
-- Email Service
-- REST API
-
----
-
-### Security
-
-- Input Validation
-- Password Hashing
-- SQL Injection Protection
-- XSS Protection
-- HTTPS
-- Authentication Middleware
-
----
-
-### Performance
-
-- Lazy Loading
-- Image Optimization
-- SEO
-- Accessibility
-- Responsive Images
-
----
-
-# JavaScript Concepts Used
-
-- Arrays
-- Objects
-- Loops
-- Functions
-- DOM Manipulation
-- Event Listeners
-- createElement()
-- appendChild()
-- remove()
-- Local Storage
-- Form Validation
-- Dynamic Content Rendering
-- CSS Class Manipulation
-
----
-
-# Learning Objectives
-
-This project is helping me learn professional web development by covering:
-
-- Semantic HTML
-- Modern CSS
-- Responsive Design
-- JavaScript
-- Git & GitHub
-- APIs
-- Node.js
-- Express.js
-- PostgreSQL
-- Authentication
-- Deployment
-- Cloud Hosting
-- Full Stack Development
-
----
-
-# Project Structure
-
-```
-Hairitage_Barbershop/
-
-│
-
-├── index.html
-
-├── css/
-│   └── styles.css
-
-├── js/
-│   └── script.js
-
-├── images/
-
-└── README.md
-```
-
----
-
-# Roadmap
-
-### Phase 1 ✅
-
-- Responsive Front-End
-- Dynamic JavaScript Features
-- Local Storage
-
-### Phase 2 🚧
-
-- Node.js
-- Express.js
-- REST API
-- PostgreSQL
-
-### Phase 3
-
-- Authentication
-- Admin Dashboard
-- Customer Dashboard
-- Email Notifications
-
-### Phase 4
-
-- Online Payments
-- Cloud Deployment
-- Custom Domain
-- SEO Optimization
-
----
-
-# Future Business Features
-
-- Online Appointment Booking
-- Customer Accounts
-- Staff Management
-- Inventory Management
-- Loyalty Program
-- Customer Reviews
-- Analytics Dashboard
-- M-Pesa Integration
-- WhatsApp Notifications
-- Google Maps Location
-- AI Appointment Assistant
-
----
-
-# Author
+# 👨‍💻 Author
 
 **Said Ahmed**
 
-Bachelor of Business Information Technology (BBIT)
-
-Passionate about Full-Stack Web Development and Software Engineering.
+GitHub:
+https://github.com/saido-szn
 
 ---
 
-# License
+# 📄 License
 
-MIT License
+This project is licensed under the MIT License.
+
+See the `LICENSE` file for more information.
