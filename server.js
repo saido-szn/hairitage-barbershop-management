@@ -1,12 +1,20 @@
+// Import the Express framework.
+// Express helps us create a web server and build APIs.
 const express = require("express");
-//Bring me the PostgreSQL connection
+
+// Import the PostgreSQL connection from db.js.
+// The pool object allows us to communicate with the database.
 const pool = require("./db");
 
+// Create an Express application.
 const app = express();
-// Allows Express to read JSON data
+
+// Tell Express to automatically convert incoming JSON data
+// into JavaScript objects so we can access it using req.body.
 app.use(express.json());
 
 app.use(express.static(__dirname));
+
 pool.query("SELECT NOW()", (err, result) => {
 
     if (err) {
