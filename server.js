@@ -53,16 +53,11 @@ app.get("/bookings", async (req, res) => {
         const result = await pool.query(
             "SELECT * FROM bookings ORDER BY id ASC"
         );
-
         // Send the bookings back to the browser as JSON
         res.json(result.rows);
-
     } catch (error) {
-
         console.log(error);
-
         res.status(500).send("Database Error");
-
     }
 
 });
