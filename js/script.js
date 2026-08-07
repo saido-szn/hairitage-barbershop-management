@@ -1,3 +1,5 @@
+// Container where all booking cards will be displayed
+const bookingsContainer = document.getElementById("bookings-container");
 //Feature 1:Loop-rendered dynamic content
 // Array of barbershop services TO store the services
 const services = [
@@ -259,3 +261,32 @@ banner.addEventListener("click", function(){
     bannerCaption.classList.toggle("show");
 })
 
+// Get all bookings from the server
+async function loadBookings() {
+    try {
+        // Ask the server for all bookings
+        const response = await fetch("/bookings");
+        // Convert the JSON response into a JavaScript array
+        const bookings = await response.json();
+        // Clear the container before displaying bookings
+        bookingsContainer.innerHTML = "";
+        // Loop through every booking in the array
+        for (const booking of bookings) {
+            // Create a new div element
+            const bookingCard = document.createElement("div");
+            // Add HTML inside the div
+            bookingCard.innerHTML = `
+                <h3>${booking.name}</h3>
+                <p><strong>Email:</strong> ${booking.email}</p>
+                <p><strong>Service:</strong> ${booking.service}</p>
+                <hr>
+            `;
+            // Add the booking card to the container
+            bookingsContainer.appendChild(bookingCard);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+// Call the function when the page loads
+loadBookings();
