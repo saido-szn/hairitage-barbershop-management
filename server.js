@@ -12,17 +12,13 @@ const app = express();
 // Tell Express to automatically convert incoming JSON data
 // into JavaScript objects so we can access it using req.body.
 app.use(express.json());
-
 app.use(express.static(__dirname));
-
 pool.query("SELECT NOW()", (err, result) => {
-
     if (err) {
         console.log(err);
     } else {
         console.log(result.rows);
     }
-
 });
 
 app.post("/booking", async (req, res) => {
@@ -43,12 +39,9 @@ app.post("/booking", async (req, res) => {
     }
 });
 
-
 // Get all bookings from the database
 app.get("/bookings", async (req, res) => {
-
     try {
-
         // Run a SQL query to get every booking
         const result = await pool.query(
             "SELECT * FROM bookings ORDER BY id ASC"
@@ -59,7 +52,6 @@ app.get("/bookings", async (req, res) => {
         console.log(error);
         res.status(500).send("Database Error");
     }
-
 });
 
 app.listen(4000, () => {
