@@ -223,16 +223,11 @@ bookingForm.addEventListener("submit", async function(event){
             name:name,
             email:email,
             service:service
-
         })
-
     });
-            // Read the server response
+        // Read the server response
         const message = await response.text();
-
         console.log(message);
-
-
     if (response.ok) {
     formMessage.textContent = "Booking sent successfully!";
     formMessage.style.color = "green";
@@ -240,7 +235,6 @@ bookingForm.addEventListener("submit", async function(event){
     formMessage.textContent = "Failed to send booking.";
     formMessage.style.color = "red";
     }
-
     customerName.value="";
     customerEmail.value="";
     customerService.value="";
