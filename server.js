@@ -8,9 +8,6 @@ const pool = require("./db");
 
 // Create an Express application.
 const app = express();
-//to allow cross-origin requests from the frontend
-const cors = require("cors");
-app.use(cors());
 // Tell Express to automatically convert incoming JSON data
 // into JavaScript objects so we can access it using req.body.
 app.use(express.json());
