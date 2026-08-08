@@ -53,6 +53,43 @@ app.get("/bookings", async (req, res) => {
         res.status(500).send("Database Error");
     }
 });
+// Update an existing booking
+app.put("/booking/:id", async (req, res) => {
+
+    try {
+
+        // Get the booking ID from the URL
+        const { id } = req.params;
+
+        // Get the new information from the request body
+        const { name, email, service } = req.body;
+
+        // Update the booking in PostgreSQL
+        const result = await pool.query(
+            `UPDATE bookings
+             SET name = $1,
+                 email = $2,
+                 service = $3
+             WHERE id = $4
+             RETURNING *`,
+            [name, email, service, id]
+        );
+
+        // Check whether the booking existed
+        if (result.rows.length === 0) {
+            return res.status(404).send("Booking not found");
+        }
+
+        // Send the updated booking back to the browser
+        res.json(result.rows[0]);
+
+    } catch (error) {
+
+        console.log(error);
+
+        res.status(500).send("Database Error");
+    }
+});
 
 app.listen(4000, () => {
     console.log("Server running at http://localhost:4000");
