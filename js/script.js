@@ -256,31 +256,50 @@ banner.addEventListener("click", function(){
 })
 
 // Get all bookings from the server
+// Get the container where booking cards will be displayed
+const bookingsContainer = document.getElementById("bookings-container");
+
+// Get all bookings from the server
 async function loadBookings() {
     try {
         // Ask the server for all bookings
         const response = await fetch("/bookings");
+        // Check if the server returned an error
+        if (!response.ok) {
+            throw new Error("Failed to load bookings");
+        }
         // Convert the JSON response into a JavaScript array
         const bookings = await response.json();
         // Clear the container before displaying bookings
         bookingsContainer.innerHTML = "";
-        // Loop through every booking in the array
+        // Loop through every booking
         for (const booking of bookings) {
-            // Create a new div element
+            // Create a new div for the booking
             const bookingCard = document.createElement("div");
-            // Add HTML inside the div
+            // Give the card a CSS class
+            bookingCard.classList.add("booking-card");
+            // Add the booking information
             bookingCard.innerHTML = `
                 <h3>${booking.name}</h3>
-                <p><strong>Email:</strong> ${booking.email}</p>
-                <p><strong>Service:</strong> ${booking.service}</p>
-                <hr>
+                <p>
+                    <strong>Email:</strong>
+                    ${booking.email}
+                </p>
+                <p>
+                    <strong>Service:</strong>
+                    ${booking.service}
+                </p>
+                <p>
+                    <strong>Booking #:</strong>
+                    ${booking.id}
+                </p>
             `;
-            // Add the booking card to the container
+            // Add the card to the bookings container
             bookingsContainer.appendChild(bookingCard);
         }
     } catch (error) {
         console.log(error);
     }
 }
-// Call the function when the page loads
+// Load bookings when the page opens
 loadBookings();
