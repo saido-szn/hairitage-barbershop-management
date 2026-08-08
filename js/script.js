@@ -255,10 +255,8 @@ banner.addEventListener("click", function(){
     bannerCaption.classList.toggle("show");
 })
 
-// Get all bookings from the server
 // Get the container where booking cards will be displayed
 const bookingsContainer = document.getElementById("bookings-container");
-
 // Get all bookings from the server
 async function loadBookings() {
     try {
@@ -272,6 +270,11 @@ async function loadBookings() {
         const bookings = await response.json();
         // Clear the container before displaying bookings
         bookingsContainer.innerHTML = "";
+        // Show a message if there are no bookings
+        if (bookings.length === 0) {
+            bookingsContainer.textContent = "No bookings available.";
+            return;
+        }
         // Loop through every booking
         for (const booking of bookings) {
             // Create a new div for the booking
