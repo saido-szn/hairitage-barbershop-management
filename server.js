@@ -19,7 +19,6 @@ pool.query("SELECT NOW()", (err, result) => {
         console.log(result.rows);
     }
 });
-
 app.post("/booking", async (req, res) => {
     try {
         //destructuring
@@ -37,7 +36,6 @@ app.post("/booking", async (req, res) => {
         res.status(500).send("Database Error");
     }
 });
-
 // Get all bookings from the database
 app.get("/bookings", async (req, res) => {
     try {
