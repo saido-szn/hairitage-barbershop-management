@@ -397,18 +397,15 @@ footer{
     cursor:pointer;
     transition:.3s;
 }
-
 #booking-form button:hover{
     background:var(--white);
     color:var(--gold);
 }
-
 #form-message{
     margin-top:20px;
     font-weight:bold;
     color:var(--gold);
 }
-
 .banner-caption{
     position:absolute;
     bottom:30px;

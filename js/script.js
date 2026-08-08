@@ -80,10 +80,10 @@ const services = [
     }
 ];
 //Finding the container element in HTML where the service cards will be appended
-const servicesContainer=document.getElementById("services-container");
+const servicesContainer = document.getElementById("services-container");
 
 //Loop for going through each and every service in the services array and creating a card for each service
-services.forEach(function(service){
+services.forEach(function (service) {
     //Creating a new div element for each service card
     const card = document.createElement("div");
     //Giving it same name as the class name in the CSS file to apply the styles
@@ -100,10 +100,10 @@ services.forEach(function(service){
     `;*/
     //or
     card.innerHTML =
-    "<h3>" + service.name + "</h3>" +
-    "<p>" + service.description + "</p>" +
-    "<strong>" + service.price + "</strong>";
-    
+        "<h3>" + service.name + "</h3>" +
+        "<p>" + service.description + "</p>" +
+        "<strong>" + service.price + "</strong>";
+
     //Appending (meaning  adding an element to the end of another element) the card to the services container
     servicesContainer.appendChild(card);
 });
@@ -113,31 +113,31 @@ services.forEach(function(service){
 //Feature 4: Persistent Data Storage using Local Storage
 //using createElement() and appendChild()), and each item gets its own button to remove it (using remove()).
 //Finding the input element in HTML where the user will type the service name
-const input= document.getElementById("service-input");
+const input = document.getElementById("service-input");
 const button = document.getElementById("add-button");
-const list= document.getElementById("service-list");
+const list = document.getElementById("service-list");
 //Creating an empty array to store the services added by the user
 let wishlist = [];
 
 //Loading storage
 const savedWishlist = localStorage.getItem("wishlist");
-    //Storing the updated wishlist array in the local storage in form of a string using JSON.stringify() method, so that it can be retrieved later even after the page is refreshed or closed
-if(savedWishlist){
-        //Parsing the saved wishlist from local storage back into an array using JSON.parse() method
-        wishlist = JSON.parse(savedWishlist);
-        //Display the saved wishlist
-        wishlist.forEach(function(service) {
+//Storing the updated wishlist array in the local storage in form of a string using JSON.stringify() method, so that it can be retrieved later even after the page is refreshed or closed
+if (savedWishlist) {
+    //Parsing the saved wishlist from local storage back into an array using JSON.parse() method
+    wishlist = JSON.parse(savedWishlist);
+    //Display the saved wishlist
+    wishlist.forEach(function (service) {
         // We will use a function to create each list item
         createService(service);
     });
 }
 //Adding an event listener to the button so that when it is clicked, the function inside it will be executed
 //we have many events including click dblclick, mouseover, keydown ,keyup ,submit etc
-button.addEventListener("click", function(){
+button.addEventListener("click", function () {
     // Getting the value of the input element
     const newService = input.value;
     // Preventing the user from adding an empty service
-    if(newService === ""){
+    if (newService === "") {
         alert("Kindly Enter a Service");
         return;
     }
@@ -150,9 +150,9 @@ button.addEventListener("click", function(){
     // Empty the textbox
     input.value = "";
 });
-    //Function that creates ONE service item
-    //We create a function to avoid code repetition, since we are creating the same elements for each service in the wishlist
-   function createService(service){
+//Function that creates ONE service item
+//We create a function to avoid code repetition, since we are creating the same elements for each service in the wishlist
+function createService(service) {
     //Creating a new list item element for the service
     const listItem = document.createElement("li");
     //Setting the text content of the list item to the service name
@@ -166,11 +166,11 @@ button.addEventListener("click", function(){
     //Adding a class to the remove button for styling purposes
     removeButton.classList.add("remove-button");
     //Adding an event listener to the remove button so that when it is clicked, the function inside it will be executed
-    removeButton.addEventListener("click", function(){
+    removeButton.addEventListener("click", function () {
         //Removing the list item from the list when the remove button is clicked
         listItem.remove();
         //Removing the service from the wishlist array when the remove button is clicked
-        wishlist = wishlist.filter(function(item){
+        wishlist = wishlist.filter(function (item) {
             //Filtering the wishlist array to remove the service that was clicked
             return item !== service;
         });
@@ -197,7 +197,7 @@ const customerService = document.getElementById("customer-service");
 const formMessage = document.getElementById("form-message");
 
 //Adding an Event Listener to the form so that when it is submitted, the function inside it will be executed
-bookingForm.addEventListener("submit", async function(event){
+bookingForm.addEventListener("submit", async function (event) {
     //To prevent the form from submitting and refreshing the page 
     event.preventDefault();
     //Getting the values of the input fields
@@ -206,38 +206,38 @@ bookingForm.addEventListener("submit", async function(event){
     const service = customerService.value;
     //Validating the form fields to make sure they are not empty
     // || in JavaScript is the logical OR operator, it returns true if either of the operands is true, and false if both are false
-    if(name ===""|| email ==="" || service ===""){
+    if (name === "" || email === "" || service === "") {
         formMessage.textContent = "Please fill in all the fields.";
         formMessage.style.color = "red";
-    }else{
-    const response = await fetch("/booking", {
-        
-        method: "POST",
+    } else {
+        const response = await fetch("/booking", {
 
-        headers:{
-            "Content-Type":"application/json"
-        },
+            method: "POST",
 
-        body: JSON.stringify({
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-            name:name,
-            email:email,
-            service:service
-        })
-    });
+            body: JSON.stringify({
+
+                name: name,
+                email: email,
+                service: service
+            })
+        });
         // Read the server response
         const message = await response.text();
         console.log(message);
-    if (response.ok) {
-    formMessage.textContent = "Booking sent successfully!";
-    formMessage.style.color = "green";
-    } else {
-    formMessage.textContent = "Failed to send booking.";
-    formMessage.style.color = "red";
-    }
-    customerName.value="";
-    customerEmail.value="";
-    customerService.value="";
+        if (response.ok) {
+            formMessage.textContent = "Booking sent successfully!";
+            formMessage.style.color = "green";
+        } else {
+            formMessage.textContent = "Failed to send booking.";
+            formMessage.style.color = "red";
+        }
+        customerName.value = "";
+        customerEmail.value = "";
+        customerService.value = "";
     }
 });
 
@@ -248,7 +248,7 @@ const banner = document.getElementById("banner");
 const bannerCaption = document.getElementById("banner-caption");
 
 //Adding an event listener to the banner so that when it is clicked, the function inside it will be executed
-banner.addEventListener("click", function(){
+banner.addEventListener("click", function () {
     console.log("Banner clicked");
     //Toggle means:
     //If class exists, REMOVE IT, if class does not exist, ADD IT
