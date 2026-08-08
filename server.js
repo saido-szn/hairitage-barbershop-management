@@ -82,11 +82,8 @@ app.put("/booking/:id", async (req, res) => {
 
         // Send the updated booking back to the browser
         res.json(result.rows[0]);
-
     } catch (error) {
-
         console.log(error);
-
         res.status(500).send("Database Error");
     }
 });
