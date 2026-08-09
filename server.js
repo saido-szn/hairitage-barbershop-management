@@ -1,11 +1,9 @@
 // Import the Express framework.
 // Express helps us create a web server and build APIs.
 const express = require("express");
-
 // Import the PostgreSQL connection from db.js.
 // The pool object allows us to communicate with the database.
 const pool = require("./db");
-
 // Create an Express application.
 const app = express();
 // Tell Express to automatically convert incoming JSON data
