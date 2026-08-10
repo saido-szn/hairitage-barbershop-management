@@ -81,7 +81,6 @@ const services = [
 ];
 //Finding the container element in HTML where the service cards will be appended
 const servicesContainer = document.getElementById("services-container");
-
 //Loop for going through each and every service in the services array and creating a card for each service
 services.forEach(function (service) {
     //Creating a new div element for each service card
@@ -182,13 +181,10 @@ function createService(service) {
     //Appending the list item to the list
     list.appendChild(listItem);
 }
-
-
 //Feature 3:Form Handling with validation Feedback using event.preventDefault()
 // For us we are going to use Book Appointment form 
 //where the user will enter their name, email, phone number and select a service from the dropdown list and then click the submit button to book an appointment
 const bookingForm = document.getElementById("booking-form");
-
 //Getting the input fields from the form
 const customerName = document.getElementById("customer-name");
 const customerEmail = document.getElementById("customer-email");
@@ -306,3 +302,4 @@ async function loadBookings() {
 }
 // Load bookings when the page opens
 loadBookings();
+//THE NEXT CHAPTER.....
