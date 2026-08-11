@@ -250,7 +250,6 @@ banner.addEventListener("click", function () {
     //If class exists, REMOVE IT, if class does not exist, ADD IT
     bannerCaption.classList.toggle("show");
 })
-
 // Get the container where booking cards will be displayed
 const bookingsContainer = document.getElementById("bookings-container");
 // Get all bookings from the server
