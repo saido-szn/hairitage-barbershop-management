@@ -1,5 +1,5 @@
 // Container where all booking cards will be displayed
-const bookingsContainer = document.getElementById("bookings-container");
+
 //Feature 1:Loop-rendered dynamic content
 // Array of barbershop services TO store the services
 const services = [
@@ -302,4 +302,3 @@ async function loadBookings() {
 }
 // Load bookings when the page opens
 loadBookings();
-//THE NEXT CHAPTER.....
