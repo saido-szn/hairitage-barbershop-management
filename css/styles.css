@@ -490,3 +490,58 @@ footer{
     color: var(--gray);
     margin: 5px auto;
 }
+/* FLOATING SOCIAL BUTTONS */
+/* SOCIAL MEDIA BUTTONS */
+.floating-socials {
+    position: static;
+
+    display: flex;
+    flex-direction: row;
+
+    /* Center the icons horizontally */
+    justify-content: center;
+
+    /* Space between the icons */
+    gap: 18px;
+
+    /* Space between the email and icons */
+    margin-top: 25px;
+}
+/* Individual social-media button */
+.social-button {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+
+    color: var(--gold);
+    background: transparent;
+
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+/* Icons */
+.social-button svg {
+    width: 22px;
+    height: 22px;
+
+    fill: currentColor;
+}
+/* Instagram outline */
+.social-button:nth-child(2) svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+}
+/* Hover effect */
+.social-button:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-5px);
+}
