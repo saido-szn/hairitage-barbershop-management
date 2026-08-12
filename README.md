@@ -246,7 +246,7 @@ PUT /booking/:id
 
 This endpoint allows an existing booking to be updated using its booking ID.
 
-## Database
+ Database
 
 The main database table is:
 
@@ -344,7 +344,7 @@ Said Ahmed
 
 GitHub:
 
-https://github.com/saido-szn
+<https://github.com/saido-szn>
 
 ## License
 
