@@ -1,18 +1,5 @@
-const express = require("express");
-const pool = require("./db");
+require("dotenv").config();
 const nodemailer = require("nodemailer");
-
-const app = express();
-
-app.use(express.json());
-app.use(express.static(__dirname));
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD
-    }
-});
 // Import the Express framework.
 // Express helps us create a web server and build APIs.
 const express = require("express");
@@ -25,6 +12,14 @@ const app = express();
 // into JavaScript objects so we can access it using req.body.
 app.use(express.json());
 app.use(express.static(__dirname));
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
+    }
+});
+
 pool.query("SELECT NOW()", (err, result) => {
     if (err) {
         console.log(err);
@@ -34,19 +29,42 @@ pool.query("SELECT NOW()", (err, result) => {
 });
 app.post("/booking", async (req, res) => {
     try {
-        //destructuring
         const { name, email, service } = req.body;
+        // Save booking in PostgreSQL
         const result = await pool.query(
             `INSERT INTO bookings(name, email, service)
              VALUES($1, $2, $3)
              RETURNING *`,
             [name, email, service]
         );
+
         console.log(result.rows);
-        res.send("Booking saved successfully!");
+        // Send confirmation email
+        await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: email,
+
+            subject: "Hairitage BarberShop Booking Confirmation",
+
+            text: `Hello ${name},
+
+Your booking has been received.
+
+Service: ${service}
+
+Thank you for choosing Hairitage BarberShop.
+`
+
+        });
+
+        res.send("Booking saved and confirmation email sent!");
+
     } catch (error) {
+
         console.log(error);
-        res.status(500).send("Database Error");
+
+        res.status(500).send("Database or Email Error");
+
     }
 });
 // Get all bookings from the database
