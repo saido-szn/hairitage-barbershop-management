@@ -1,5 +1,6 @@
 // Container where all booking cards will be displayed
-
+//Finding the container element in HTML where the service cards will be appended
+const servicesContainer = document.getElementById("services-container");
 //Feature 1:Loop-rendered dynamic content
 // Array of barbershop services TO store the services
 const services = [
@@ -79,8 +80,7 @@ const services = [
         price: "KSh 1200"
     }
 ];
-//Finding the container element in HTML where the service cards will be appended
-const servicesContainer = document.getElementById("services-container");
+
 //Loop for going through each and every service in the services array and creating a card for each service
 services.forEach(function (service) {
     //Creating a new div element for each service card
