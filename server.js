@@ -1,3 +1,18 @@
+const express = require("express");
+const pool = require("./db");
+const nodemailer = require("nodemailer");
+
+const app = express();
+
+app.use(express.json());
+app.use(express.static(__dirname));
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
+    }
+});
 // Import the Express framework.
 // Express helps us create a web server and build APIs.
 const express = require("express");
