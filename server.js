@@ -19,7 +19,6 @@ const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASSWORD
     }
 });
-
 pool.query("SELECT NOW()", (err, result) => {
     if (err) {
         console.log(err);
