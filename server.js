@@ -37,34 +37,40 @@ app.post("/booking", async (req, res) => {
              RETURNING *`,
             [name, email, service]
         );
-
         console.log(result.rows);
-        // Send confirmation email
+        // Send confirmation email to the customer
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: email,
-
             subject: "Hairitage BarberShop Booking Confirmation",
 
             text: `Hello ${name},
-
 Your booking has been received.
-
 Service: ${service}
 
 Thank you for choosing Hairitage BarberShop.
 `
+        });
+        // Send notification email to the barbershop
+        await transporter.sendMail({
+            from: process.env.EMAIL_USER,
+            to: process.env.SHOP_EMAIL,
+            subject: "New Hairitage BarberShop Booking",
 
+            text: `A new booking has been received.
+
+Customer: ${name}
+Email: ${email}
+Service: ${service}
+
+Please check the booking system for more details.
+`
         });
 
-        res.send("Booking saved and confirmation email sent!");
-
+        res.send("Booking saved and emails sent!");
     } catch (error) {
-
         console.log(error);
-
         res.status(500).send("Database or Email Error");
-
     }
 });
 // Get all bookings from the database
