@@ -28,28 +28,60 @@ pool.query("SELECT NOW()", (err, result) => {
 });
 app.post("/booking", async (req, res) => {
     try {
+        // Get the information sent by the browser
         const { name, email, service } = req.body;
-        // Save booking in PostgreSQL
+
+        // Check that all required fields were provided
+        if (!name || !email || !service) {
+            return res.status(400).json({
+                error: "Name, email and service are required."
+            });
+        }
+
+        // Remove unnecessary spaces
+        const cleanName = name.trim();
+        const cleanEmail = email.trim();
+        const cleanService = service.trim();
+
+        // Check that the fields are not empty after removing spaces
+        if (!cleanName || !cleanEmail || !cleanService) {
+            return res.status(400).json({
+                error: "Name, email and service cannot be empty."
+            });
+        }
+
+        // Basic email format check
+        if (!cleanEmail.includes("@")) {
+            return res.status(400).json({
+                error: "Please provide a valid email address."
+            });
+        }
+
+        // Save the validated booking in PostgreSQL
         const result = await pool.query(
             `INSERT INTO bookings(name, email, service)
              VALUES($1, $2, $3)
              RETURNING *`,
-            [name, email, service]
+            [cleanName, cleanEmail, cleanService]
         );
+
         console.log(result.rows);
+
         // Send confirmation email to the customer
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
-            to: email,
+            to: cleanEmail,
             subject: "Hairitage BarberShop Booking Confirmation",
 
-            text: `Hello ${name},
-Your booking has been received.
-Service: ${service}
+            text: `Hello ${cleanName},
 
-Thank you for choosing Hairitage BarberShop.
-`
+Your booking has been received.
+
+Service: ${cleanService}
+
+Thank you for choosing Hairitage BarberShop.`
         });
+
         // Send notification email to the barbershop
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
@@ -58,18 +90,24 @@ Thank you for choosing Hairitage BarberShop.
 
             text: `A new booking has been received.
 
-Customer: ${name}
-Email: ${email}
-Service: ${service}
+Customer: ${cleanName}
+Email: ${cleanEmail}
+Service: ${cleanService}
 
-Please check the booking system for more details.
-`
+Please check the booking system for more details.`
         });
 
-        res.send("Booking saved and emails sent!");
+        // Tell the browser everything succeeded
+        res.json({
+            message: "Booking saved and emails sent!"
+        });
+
     } catch (error) {
         console.log(error);
-        res.status(500).send("Database or Email Error");
+
+        res.status(500).json({
+            error: "Database or Email Error"
+        });
     }
 });
 // Get all bookings from the database
