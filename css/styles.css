@@ -509,7 +509,7 @@ footer {
     font-style: italic;
     margin-bottom: 20px;
 }
-//This is the testimonial card heading and subheading styles
+/* This is the testimonial card heading and subheading styles */
 .testimonial-card h3 {
     color: var(--gold);
 }
