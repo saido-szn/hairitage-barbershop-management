@@ -74,9 +74,7 @@ app.post("/booking", async (req, res) => {
             subject: "Hairitage BarberShop Booking Confirmation",
 
             text: `Hello ${cleanName},
-
 Your booking has been received.
-
 Service: ${cleanService}
 
 Thank you for choosing Hairitage BarberShop.`

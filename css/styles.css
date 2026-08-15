@@ -513,7 +513,11 @@ footer {
 .testimonial-card h3 {
     color: var(--gold);
 }
-
+.testimonial-card h4 {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 400;
+}
 /* OPENING HOURS */
 .opening-hours {
     margin: 40px auto;
