@@ -13,30 +13,71 @@
 <body>
 
     <section id="login">
-        <h1>Admin Login</h1>
-        <form id="login-form">
-            <input
-                type="text"
-                id="username"
-                placeholder="Username"
-                required
-            >
-            <input
-                type="password"
-                id="password"
-                placeholder="Password"
-                required
-            >
 
-            <button type="submit">
-                Login
-            </button>
+        <div class="login-card">
 
-        </form>
+            <div class="login-logo">
+                Hairitage BarberShop
+            </div>
 
-        <p id="login-message"></p>
+            <p class="login-label">ADMINISTRATION</p>
+
+            <h1>Admin Login</h1>
+
+            <p class="login-description">
+                Sign in to manage appointments and bookings.
+            </p>
+
+            <form id="login-form">
+
+                <div class="login-field">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter your username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="login-field">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="login-button">
+                    Login
+                </button>
+
+            </form>
+
+            <p id="login-message"></p>
+
+            <p class="login-footer">
+                Hairitage BarberShop
+            </p>
+
+        </div>
 
     </section>
+
 
     <script src="js/login.js"></script>
 
