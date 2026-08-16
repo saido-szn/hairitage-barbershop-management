@@ -227,10 +227,8 @@ app.delete("/booking/:id", async (req, res) => {
         if (result.rows.length === 0) {
             return res.status(404).send("Booking not found");
         }
-
         // Send a success response
         res.send("Booking deleted successfully!");
-
     } catch (error) {
         console.log(error);
         res.status(500).send("Database Error");
