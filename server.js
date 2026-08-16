@@ -209,7 +209,33 @@ app.put("/booking/:id", async (req, res) => {
         res.status(500).send("Database Error");
     }
 });
+// Delete an existing booking
+app.delete("/booking/:id", async (req, res) => {
+    try {
+        // Get the booking ID from the URL
+        const { id } = req.params;
 
+        // Delete the booking from PostgreSQL
+        const result = await pool.query(
+            `DELETE FROM bookings
+             WHERE id = $1
+             RETURNING *`,
+            [id]
+        );
+
+        // Check whether the booking existed
+        if (result.rows.length === 0) {
+            return res.status(404).send("Booking not found");
+        }
+
+        // Send a success response
+        res.send("Booking deleted successfully!");
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Database Error");
+    }
+});
 app.listen(4000, () => {
     console.log("Server running at http://localhost:4000");
 });
