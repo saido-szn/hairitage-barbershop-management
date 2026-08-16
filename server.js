@@ -1,5 +1,6 @@
 require("dotenv").config();
 const nodemailer = require("nodemailer");
+const bcrypt = require("bcrypt");
 // Import the Express framework.
 // Express helps us create a web server and build APIs.
 const express = require("express");
@@ -12,6 +13,60 @@ const app = express();
 // into JavaScript objects so we can access it using req.body.
 app.use(express.json());
 app.use(express.static(__dirname));
+// Admin login
+app.post("/login", async (req, res) => {
+    try {
+        // Get the username and password sent by the browser
+        const { username, password } = req.body;
+
+        // Find the admin in the database
+        const result = await pool.query(
+            "SELECT * FROM admins WHERE username = $1",
+            [username]
+        );
+
+        // Check if the username exists
+        if (result.rows.length === 0) {
+
+            return res.status(401).json({
+                message: "Invalid username or password"
+            });
+
+        }
+        // Get the admin record
+        const admin = result.rows[0];
+        // Compare the entered password with the stored hash
+        const passwordMatches = await bcrypt.compare(
+            password,
+            admin.password
+        );
+
+        // Check whether the password is correct
+        if (!passwordMatches) {
+
+            return res.status(401).json({
+                message: "Invalid username or password"
+            });
+
+        }
+
+
+        // Login successful
+        res.json({
+            message: "Login successful"
+        });
+
+
+    } catch (error) {
+
+        console.log(error);
+
+        res.status(500).json({
+            message: "Server error"
+        });
+
+    }
+});
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
