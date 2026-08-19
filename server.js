@@ -228,3 +228,9 @@ app.delete("/booking/:id", async (req, res) => {
 app.listen(4000, () => {
     console.log("Server running at http://localhost:4000");
 });
+// Export the Express app for testing purposes
+module.exports = app;
+// This code sets up a web server using Express, connects to a PostgreSQL database, and provides endpoints for handling bookings and admin login. It also sends confirmation emails to customers and notifications to the barbershop when a new booking is made.
+// The server listens on port 4000 and serves static files from the current directory.
+// The code also includes error handling for database and email operations, ensuring that appropriate responses are sent back to the client in case of failures.
+// Note: Make sure to create a .env file with the necessary environment variables for email configuration and database connection.
