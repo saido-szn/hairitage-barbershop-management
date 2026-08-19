@@ -24,14 +24,12 @@ app.post("/login", async (req, res) => {
             "SELECT * FROM admins WHERE username = $1",
             [username]
         );
-
         // Check if the username exists
         if (result.rows.length === 0) {
 
             return res.status(401).json({
                 message: "Invalid username or password"
             });
-
         }
         // Get the admin record
         const admin = result.rows[0];
@@ -40,25 +38,18 @@ app.post("/login", async (req, res) => {
             password,
             admin.password
         );
-
         // Check whether the password is correct
         if (!passwordMatches) {
 
             return res.status(401).json({
                 message: "Invalid username or password"
             });
-
         }
-
-
         // Login successful
         res.json({
             message: "Login successful"
         });
-
-
     } catch (error) {
-
         console.log(error);
 
         res.status(500).json({
